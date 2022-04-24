@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Proyecto para hackaton de Twilio en la comunidad de discord de @midudev https://twitch.tv/midudev
 
 ## Getting Started
 
