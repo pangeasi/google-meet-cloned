@@ -9,9 +9,17 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chakra-ui/react": "^1.8.8",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
+    "framer-motion": "^6",
     "next": "12.1.5",
     "react": "18.0.0",
-    "react-dom": "18.0.0"
+    "react-dom": "18.0.0",
+    "react-icons": "4.3.1",
+    "twilio": "3.76.1",
+    "twilio-video": "2.21.1",
+    "unique-names-generator": "4.7.1"
   },
   "devDependencies": {
     "@types/node": "17.0.25",
