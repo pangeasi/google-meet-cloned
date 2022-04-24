@@ -1,6 +1,7 @@
 import { Box } from "@chakra-ui/react";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { useIsRoom } from "../../../hooks/useIsRoom";
 import { Header } from "../Header";
 
 interface Props {
@@ -8,8 +9,7 @@ interface Props {
 }
 
 export const Layout = ({ children }: Props) => {
-  const router = useRouter();
-  const isRoom = router.pathname.includes("/room");
+  const { isRoom } = useIsRoom();
   return (
     <Box bg={isRoom ? "black" : "none"} h="100vh">
       <Header />
