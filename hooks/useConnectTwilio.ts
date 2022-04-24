@@ -33,7 +33,6 @@ export const useConnectTwilio = () => {
 
     const room = await Video.connect(token);
     room.on("participantConnected", (participant) => {
-      console.log(`${participant.identity} connected`);
       toast({
         title: "Participant connected",
         description: `${participant.identity} has joined the rom`,
@@ -41,7 +40,6 @@ export const useConnectTwilio = () => {
       });
     });
     room.on("participantDisconnected", (participant) => {
-      console.log(`${participant.identity} disconnected`);
       toast({
         title: "Participant disconnected",
         description: `${participant.identity} has left the room`,
