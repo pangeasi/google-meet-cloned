@@ -1,6 +1,5 @@
-import { Box, Button, HStack, Input, Text, VStack } from "@chakra-ui/react";
+import { Box, Button, Input, Stack, Text, VStack } from "@chakra-ui/react";
 import { CameraIcon } from "../CameraIcon";
-import * as Video from "twilio-video";
 import dynamic from "next/dynamic";
 import { useRandomRoomName } from "./hooks";
 import { useRouter } from "next/router";
@@ -18,7 +17,7 @@ const NewMeet = () => {
           de videollamadas, usalo de forma gratuita por todo el mundo.
         </Text>
       </VStack>
-      <HStack mb={10}>
+      <Stack direction={{ base: "column", md: "row" }} mb={10}>
         <Input
           value={roomName}
           onChange={(ev) => roomNameSet(ev.target.value)}
@@ -32,7 +31,7 @@ const NewMeet = () => {
         >
           Nueva reunión
         </Button>
-      </HStack>
+      </Stack>
     </Box>
   );
 };

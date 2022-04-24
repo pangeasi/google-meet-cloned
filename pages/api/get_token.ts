@@ -1,20 +1,32 @@
-import { jwt } from "twilio";
+import client, { jwt } from "twilio";
 import type { NextApiRequest, NextApiResponse } from "next";
 import {
   ACCOUNT_SID,
   API_KEY_SECRET,
   API_KEY_SID,
+  AUTH_TOKEN,
 } from "../../config/constants";
+import { RoomInstance } from "twilio/lib/rest/video/v1/room";
 
 type Data = {
-  token: string;
+  token?: string;
+  message?: string;
 };
 
-export default function handler(
+export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
+  const c = client(ACCOUNT_SID, AUTH_TOKEN);
   const { identity, room } = req.body;
+  const participants = await (
+    await c.video.v1.rooms(room).participants.list({ status: "connected" })
+  ).map((p) => p.identity);
+
+  if (participants.includes(identity)) {
+    res.status(402).json({ message: "not accepted" });
+    return;
+  }
   const accessToken = new jwt.AccessToken(
     ACCOUNT_SID,
     API_KEY_SID,
