@@ -8,8 +8,9 @@ interface Props {
 
 export const CallActions = ({ room }: Props) => {
   return (
-    <Flex>
+    <Flex w="full" justify="center" position="fixed" bottom={20}>
       <IconButton
+        size="lg"
         onClick={() => room.disconnect()}
         aria-label="disconnect"
         rounded="full"
