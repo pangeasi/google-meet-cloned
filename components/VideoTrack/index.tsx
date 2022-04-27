@@ -1,8 +1,13 @@
 import { AspectRatio, Box } from "@chakra-ui/react";
 import { useAttachVideoTrack } from "./hooks";
+import * as Video from "twilio-video";
 
-export const VideoTrack = ({ ...props }) => {
-  const videoRef = useAttachVideoTrack();
+interface Props {
+  track?: Video.LocalVideoTrack | Video.RemoteVideoTrack;
+}
+
+export const VideoTrack = ({ track }: Props) => {
+  const videoRef = useAttachVideoTrack({ track });
   return (
     <Box w="full">
       <AspectRatio ratio={16 / 9}>

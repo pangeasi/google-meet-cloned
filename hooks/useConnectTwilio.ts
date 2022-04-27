@@ -1,14 +1,14 @@
 import { useToast } from "@chakra-ui/react";
-import { useAtomValue } from "jotai";
+import { useAtom, useAtomValue } from "jotai";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import * as Video from "twilio-video";
-import { starWars, uniqueNamesGenerator } from "unique-names-generator";
+import { roomAtom } from "../atoms/room";
 import { usernameAtom } from "../atoms/user";
 import { request } from "../config/request";
 
 export const useConnectTwilio = () => {
-  const [room, roomSet] = useState<Video.Room | null>(null);
+  const [room, roomSet] = useAtom(roomAtom);
   const username = useAtomValue(usernameAtom);
   const toast = useToast();
   const router = useRouter();
@@ -34,29 +34,33 @@ export const useConnectTwilio = () => {
     const room = await Video.connect(token);
     room.on("participantConnected", (participant) => {
       toast({
-        title: "Participant connected",
-        description: `${participant.identity} has joined the rom`,
+        title: "Participante conectado",
+        description: `${participant.identity} se ha conectado`,
+        position: "top",
         status: "success",
       });
     });
     room.on("participantDisconnected", (participant) => {
       toast({
-        title: "Participant disconnected",
-        description: `${participant.identity} has left the room`,
-        status: "error",
+        title: "Participante desconectado",
+        description: `${participant.identity} se ha desconectado`,
+        position: "top",
+        status: "info",
       });
     });
     room.on("disconnected", () => {
       toast({
-        title: "Room disconnected",
-        description: "The room has been disconnected",
-        status: "error",
+        title: "Sala desconectada",
+        description: "La sala se ha desconectado",
+        position: "top",
+        status: "info",
       });
       router.push("/");
     });
     toast({
-      title: "Connected",
-      description: `You are connected to the room ${room.name}`,
+      title: "Conectado a la sala",
+      description: `Conectado a la sala ${room.name}`,
+      position: "top",
       status: "success",
     });
     roomSet(room);
