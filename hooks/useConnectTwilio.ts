@@ -26,7 +26,9 @@ export const useConnectTwilio = () => {
       toast({
         title: "Tu identidad no está disponible",
         description: "Alguien más está usando tu nombre",
+        position: "top",
         status: "error",
+        isClosable: true,
       });
       return;
     }
@@ -38,6 +40,7 @@ export const useConnectTwilio = () => {
         description: `${participant.identity} se ha conectado`,
         position: "top",
         status: "success",
+        isClosable: true,
       });
     });
     room.on("participantDisconnected", (participant) => {
@@ -46,6 +49,7 @@ export const useConnectTwilio = () => {
         description: `${participant.identity} se ha desconectado`,
         position: "top",
         status: "info",
+        isClosable: true,
       });
     });
     room.on("disconnected", () => {
@@ -54,7 +58,9 @@ export const useConnectTwilio = () => {
         description: "La sala se ha desconectado",
         position: "top",
         status: "info",
+        isClosable: true,
       });
+      roomSet(null);
       router.push("/");
     });
     toast({
@@ -62,6 +68,7 @@ export const useConnectTwilio = () => {
       description: `Conectado a la sala ${room.name}`,
       position: "top",
       status: "success",
+      isClosable: true,
     });
     roomSet(room);
   };
