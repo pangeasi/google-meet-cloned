@@ -9,7 +9,7 @@ interface Options extends Omit<RequestInit, "body"> {
 }
 
 export const request = async (url: string, options: Options = {}) => {
-  const toast = createStandaloneToast();
+  const { toast } = createStandaloneToast();
 
   try {
     if (options.body) {
