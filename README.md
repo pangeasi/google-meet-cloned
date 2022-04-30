@@ -14,6 +14,14 @@ Open [http://localhost:3000](http://localhost:3000) with your browser.
 
 ## Changelog
 
+### v1.0.2
+
+- se añade componente AudioTrack
+- Update version de chakra-ui y emotion
+- estilos mejorados en VideoTrack
+- se añade el nombre del participante
+- refactorización de componentes Publication, Partipant y hooks useAttachAudioTrack y useAttachVideoTrack
+
 ### v1.0.1
 
 - pantalla room:
