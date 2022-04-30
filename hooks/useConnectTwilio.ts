@@ -33,7 +33,9 @@ export const useConnectTwilio = () => {
       return;
     }
 
-    const room = await Video.connect(token);
+    const room = await Video.connect(token, {
+      dominantSpeaker: true,
+    });
     room.on("participantConnected", (participant) => {
       toast({
         title: "Participante conectado",

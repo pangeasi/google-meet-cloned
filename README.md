@@ -14,6 +14,10 @@ Open [http://localhost:3000](http://localhost:3000) with your browser.
 
 ## Changelog
 
+### v1.0.3
+
+- se añade funcionalidad cuando hay un participante que esta hablando se marca con un circulo verde, si no rojo.
+
 ### v1.0.2
 
 - se añade componente AudioTrack
